@@ -5,10 +5,6 @@ import Web.View.Posts.Index
 import Web.View.Posts.New
 import Web.View.Posts.Edit
 import Web.View.Posts.Show
-import Web.View.Posts.Index
-import Web.View.Posts.New
-import Web.View.Posts.Show
-import Web.View.Posts.Edit
 
 import qualified Text.MMark as MMark
 

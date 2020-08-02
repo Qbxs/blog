@@ -8,13 +8,20 @@ import Web.Types
 import Web.Controller.Comments
 import Web.Controller.Posts
 import IHP.Welcome.Controller
+import IHP.LoginSupport.Middleware
+import Web.Controller.Sessions
+import Web.Controller.Users
 
 instance FrontController WebApplication where
-    controllers = 
+    controllers =
         [ startPage WelcomeAction
         -- Generator Marker
         , parseRoute @CommentsController
         , parseRoute @PostsController
+        , parseRoute @SessionsController
+        , parseRoute @UsersController
         ]
 
-instance InitControllerContext WebApplication
+instance InitControllerContext WebApplication where
+    initContext =
+        initAuthentication @User

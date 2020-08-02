@@ -23,7 +23,8 @@ defaultLayout inner = H.docTypeHtml ! A.lang "en" $ [hsx|
 </head>
 <body>
     <div class="header">
-      My Amazing Blog
+      <a>My Amazing Blog</a>
+      <a href={NewSessionAction}>Login</a>
     </div>
     {carousel}
     <div class="main">
