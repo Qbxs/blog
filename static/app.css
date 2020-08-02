@@ -1,0 +1,79 @@
+.main {
+  background-color: white;
+  padding: 20px;
+  font: Helvetica;
+  max-width: 1440px;
+  margin: auto;
+  border-radius: 5px;
+}
+.header {
+  font-family: helvetica;
+  font-size: 38px;
+  text-align: left;
+  color: white;
+  width: 100%;
+  margin: auto;
+  background-color: #222;
+  padding-left: 10px;
+}
+.footer {
+  margin: 20px;
+  text-align: center;
+  font-family: "Helvetica Neue";
+  color: grey;
+}
+.clickable:hover {
+  background: #EEE;
+}
+.blog-header {
+  font-size: 12px;
+}
+.blogpost {
+  font-family: Arial;
+  padding: 10px;
+}
+.comment-section {
+  background-color: #ffffef;
+  /* border-style: solid; */
+  border-width: 1px;
+  border-color: lightgray;
+  border-radius: 5px;
+  font-size: 12px;
+}
+.comments-container {
+  padding: 10px;
+  margin: 10px;
+  font-size: 12px;
+}
+.comment {
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: lightgray;
+  font-size: 12px;
+}
+.carousel {
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+body {
+  background-image: url('geometric-leaves.png');
+  /* padding: 20px; */
+  /* margin: 20px; */
+}
+
+h1 {
+  color: black;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+img {
+  max-width:100%;
+  max-height:100%;
+}
+.post-textarea {
+  width: 100%;
+  min-height: 400px;
+}
