@@ -22,10 +22,7 @@ defaultLayout inner = H.docTypeHtml ! A.lang "en" $ [hsx|
     <title>My Amazing Blog</title>
 </head>
 <body>
-    <div class="header">
-      <a>My Amazing Blog</a>
-      <a href={NewSessionAction}>Login</a>
-    </div>
+    {navbar}
     {carousel}
     <div class="main">
         {renderFlashMessages}
@@ -37,6 +34,39 @@ defaultLayout inner = H.docTypeHtml ! A.lang "en" $ [hsx|
 </body>
 |]
 
+navbar :: Html
+navbar = [hsx|
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" href="#">My Amazing Blog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href={PostsAction}>Posts</a>
+      </li>
+      <li hidden={isNothing (get #user viewContext)}>
+        <a class="nav-link" href={CommentsAction}>Comments</a>
+      </li>
+      <li hidden={isNothing (get #user viewContext)}>
+        <a class="nav-link" href={UsersAction}>Users</a>
+      </li>
+    </ul>
+    {loginLogoutButton}
+  </div>
+</nav>
+|]
+    where
+        loginLogoutButton :: Html
+        loginLogoutButton = case (get #user viewContext) of
+            Just user -> [hsx|<a class="js-delete js-delete-no-confirm text-secondary" href={DeleteSessionAction}>Logout</a>|]
+            Nothing -> [hsx|<a class="text-secondary" href={NewUserAction}>Sign up</a>
+                            <a> | </a>
+                            <a class="text-secondary" href={NewSessionAction}>Login</a>|]
+
+carousel :: Html
 carousel = [hsx|
 	<div class="carousel">
 		<div class="carousel slide" id="main-carousel" data-ride="carousel">
@@ -113,6 +143,19 @@ scripts = do
     |]
     when (isProduction FrameworkConfig.environment) [hsx|
         <script src="/prod.js"></script>
+    |]
+    -- bootstrap table pagination (not working)
+    [hsx|
+    <script>
+      a
+      $(document).ready(function () {
+        $('#posts').DataTable({
+          "pagingType": "full"
+          "searching": true
+          });
+        $('.dataTables_length').addClass('bs-select');
+          });
+    </script>
     |]
 
 

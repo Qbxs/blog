@@ -2,6 +2,7 @@ module Web.Controller.Posts where
 
 import Web.Controller.Prelude
 import Web.View.Posts.Index
+import Web.View.Posts.Preview
 import Web.View.Posts.New
 import Web.View.Posts.Edit
 import Web.View.Posts.Show
@@ -15,6 +16,12 @@ instance Controller PostsController where
             |> fetch
         render IndexView { .. }
 
+    action PostsPreviewAction = do
+        posts <- query @Post
+            |> orderByDesc #createdAt
+            |> fetch
+        render PreView { .. }
+
     action NewPostAction = do
         let post = newRecord
         render NewView { .. }
@@ -26,10 +33,12 @@ instance Controller PostsController where
         render ShowView { .. }
 
     action EditPostAction { postId } = do
+        accessDeniedUnless (isJust currentUserOrNothing)
         post <- fetch postId
         render EditView { .. }
 
     action UpdatePostAction { postId } = do
+        accessDeniedUnless (isJust currentUserOrNothing)
         post <- fetch postId
         post
             |> buildPost
@@ -52,6 +61,7 @@ instance Controller PostsController where
                     redirectTo PostsAction
 
     action DeletePostAction { postId } = do
+        accessDeniedUnless (isJust currentUserOrNothing)
         post <- fetch postId
         deleteRecord post
         setSuccessMessage "Post deleted"

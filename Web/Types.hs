@@ -20,6 +20,7 @@ data ViewContext = ViewContext
 
 data PostsController
     = PostsAction
+    | PostsPreviewAction
     | NewPostAction
     | ShowPostAction { postId :: !(Id Post) }
     | CreatePostAction
@@ -45,7 +46,10 @@ data SessionsController
     deriving (Eq, Show, Data)
 
 data UsersController
-    = CreateUserAction
+    = UsersAction
+    | NewUserAction
+    | CreateUserAction
+    | DeleteUserAction { userId :: !(Id User) }
     deriving (Eq, Show, Data)
 
 instance HasNewSessionUrl User where

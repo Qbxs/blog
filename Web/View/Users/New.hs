@@ -11,12 +11,15 @@ instance View NewView ViewContext where
             </ol>
         </nav>
         <h1>Create Account</h1>
-
+        {renderForm user}
     |]
 
---renderForm :: User -> Html
---renderForm user = formFor user [hsx|
---    {textField #email}
---    {textField #passwordHash}
---    {submitButton}
--- |]
+renderForm :: User -> Html
+renderForm user = formFor user [hsx|
+   {textField #email}
+   {textField #passwordHash}
+   {textField #passwordHash}
+   {hiddenField #lockedAt}
+   {hiddenField #failedLoginAttempts}
+   {submitButton}
+|]

@@ -12,7 +12,7 @@ instance View IndexView ViewContext where
         </nav>
         <h1>Posts <a href={pathTo NewPostAction} class="btn btn-primary ml-4">+ New</a></h1>
         <div class="table-responsive">
-            <table class="table table-striped table-bordered">
+            <table id="posts" class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>Title</th>
@@ -28,7 +28,7 @@ instance View IndexView ViewContext where
 
 
 renderPost post = [hsx|
-    <tr onclick={ShowPostAction (get #id post)}  class="clickable">
+    <tr>
         <td><a href={ShowPostAction (get #id post)}>{get #title post}</a></td>
         <td>{get #body post}</td>
         <td>{get #createdAt post |> dateTime}</td>

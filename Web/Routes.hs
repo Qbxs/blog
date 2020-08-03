@@ -13,3 +13,4 @@ type instance ModelControllerMap WebApplication Comment = CommentsController
 instance AutoRoute SessionsController
 
 instance AutoRoute UsersController
+type instance ModelControllerMap WebApplication User = UsersController

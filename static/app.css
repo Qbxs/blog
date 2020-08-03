@@ -22,9 +22,6 @@
   font-family: "Helvetica Neue";
   color: grey;
 }
-.clickable:hover {
-  background: #EEE;
-}
 .blog-header {
   font-size: 12px;
 }
