@@ -14,7 +14,8 @@ instance View ShowView ViewContext where
         </nav>
         <div class="blog-header">
           <h1>{get #title post}</h1>
-          <p><i>{get #createdAt post |> timeAgo}</i></p>
+          <div class="createdAt"><p><i>{get #createdAt post |> timeAgo}</i></p></div>
+          <div class="hide">{get #createdAt post}</div>
         </div>
         <div class="blogpost" style="overflow:auto">{get #body post |> renderMarkdown}</div>
         <div class="comment-section">

@@ -52,6 +52,13 @@
   padding-top: 0px;
   padding-bottom: 20px;
 }
+.hide {
+  display: none;
+}
+.createdAt:hover + .hide {
+  display: block;
+  color: gray;
+}
 body {
   background-image: url('geometric-leaves.png');
   /* padding: 20px; */
