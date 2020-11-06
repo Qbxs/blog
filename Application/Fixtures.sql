@@ -30,3 +30,13 @@ INSERT INTO public.comments (id, post_id, author, body, created_at, email) VALUE
 
 
 ALTER TABLE public.comments ENABLE TRIGGER ALL;
+
+
+ALTER TABLE public.users DISABLE TRIGGER ALL;
+
+INSERT INTO public.users (id, email, password_hash, locked_at, failed_login_attempts) VALUES ('43241cf4-ec8a-4155-a315-8a169b671264', 'ip4ssi@gmail.com', 'sha256|17|aXPl/xbJJmdOxaNkDtgNbg==|aNCPDDnjGOZniAmWr7s3oFxX2P8l3+w5TD1dKSN1MnQ=', NULL, 0);
+
+
+ALTER TABLE public.users ENABLE TRIGGER ALL;
+
+
